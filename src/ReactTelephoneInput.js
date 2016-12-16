@@ -88,6 +88,7 @@ function isNumberValid(inputNumber) {
         onFocus: React.PropTypes.func,
         disabled: React.PropTypes.bool,
         pattern: React.PropTypes.string,
+	inputClasses: React.PropTypes.string
     },
     getDefaultProps() {
         return {
@@ -99,7 +100,8 @@ function isNumberValid(inputNumber) {
             onEnterKeyPress: function () {},
             preferredCountries: [],
             disabled: false,
-            placeholder: '+1 (702) 123-4567'
+            placeholder: '+1 (702) 123-4567',
+	    inputClasses: {}
         };
     },
     getNumber() {
@@ -539,9 +541,9 @@ console.log('probableCandidateIndex', probableCandidateIndex)
             'up': this.state.showDropDown
         });
         var inputClasses = classNames({
-            'form-control': true,
+            'form-control': false,
             'invalid-number': !this.props.isValid(this.state.formattedNumber.replace(/\D/g, ''))
-        });
+        }, this.props.inputClasses);
 
         var flagViewClasses = classNames({
             'flag-dropdown': true,
